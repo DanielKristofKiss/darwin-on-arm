@@ -1,0 +1,18 @@
+[submodule "image3maker"]
+	path = image3maker
+	url = https://github.com/darwin-on-arm/image3maker.git
+[submodule "DeviceTrees"]
+	path = DeviceTrees
+	url = https://github.com/darwin-on-arm/DeviceTrees.git
+[submodule "GenericBooter"]
+	path = GenericBooter
+	url = https://github.com/darwin-on-arm/GenericBooter.git
+[submodule "ramdisk"]
+	path = ramdisk
+	url = https://github.com/darwin-on-arm/ramdisk.git
+[submodule "xnu"]
+	path = xnu
+	url = https://github.com/darwin-on-arm/xnu.git
+[submodule "dtc-AppleDeviceTree"]
+	path = dtc-AppleDeviceTree
+	url = https://github.com/winocm/dtc-AppleDeviceTree.git
