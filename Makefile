@@ -25,8 +25,13 @@ xnu: FORCE
 RamImage:
 	
 
-prepareImages: xnu DeviceTrees RamImage
+prepareImages: xnu DeviceTrees RamImage image3maker
 	$(info BUILD images)
+	@rm -f GenericBooter/images/Mach.img3
+	@rm -f GenericBooter/images/DeviceTree.img3
+	@rm -f GenericBooter/images/Ramdisk.img3
+	@rm -f GenericBooter/vmlinux*
+	@rm -f GenericBooter/uImage
 	image3maker/image3maker --outputFile GenericBooter/images/Mach.img3 --imageTag krnl --dataFile xnu/BUILD/obj/DEBUG_ARM_ARMPBA8/mach_kernel
 	image3maker/image3maker --outputFile GenericBooter/images/DeviceTree.img3 --imageTag dtre --dataFile DeviceTrees/RealView.devicetree
 	image3maker/image3maker --outputFile GenericBooter/images/Ramdisk.img3 --imageTag rdsk --dataFile ramdisk/ramdisk.dmg
@@ -35,7 +40,7 @@ GenericBooter/.config: FORCE
 	$(info moving default instead of make menuconfig for genericbooter)
 	cp .config GenericBooter/
 
-GenericBooter: xnu DeviceTrees image3maker GenericBooter/.config
+GenericBooter: prepareImages DeviceTrees image3maker GenericBooter/.config
 	$(info BUILD GenericBooter)
 	@cd GenericBooter;make CROSS_COMPILE=arm-none-eabi-;
 
