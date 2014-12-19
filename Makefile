@@ -46,5 +46,5 @@ GenericBooter: prepareImages DeviceTrees image3maker GenericBooter/.config
 
 all: GenericBooter
 
-run: GenericBooter
-	qemu-system-arm -machine realview-pb-a8 -m 512 -serial stdio -append "rd=md0 serial=3 -v -s -x symbolicate_panics=1" -kernel GenericBooter/uImage
+run: FORCE
+	qemu-system-arm -machine realview-pb-a8 -m 512 -serial stdio -append "rd=md0 serial=3 -v" -kernel GenericBooter/uImage
